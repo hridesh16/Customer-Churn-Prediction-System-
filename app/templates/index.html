@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Churn Prediction</title>
+</head>
+<body>
+    <h1>Customer Churn Prediction Form</h1>
+    <form action="/predict" method="post">
+
+        {% for feature in features %}
+            <label>{{ feature }}:</label><br>
+            <input type="number" step="any" name="{{ feature }}"><br><br>
+        {% endfor %}
+
+        <input type="submit" value="Predict Churn">
+    </form>
+
+    {% if prediction is not none %}
+    <h2>Prediction: {{ 'Churn' if prediction==1 else 'No Churn' }}</h2>
+    {% endif %}
+</body>
+</html>
